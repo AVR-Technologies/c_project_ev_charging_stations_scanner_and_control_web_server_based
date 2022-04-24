@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2021 at 01:00 PM
+-- Generation Time: Apr 24, 2022 at 07:56 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ev_charging_stations`
+-- Database: `ev_scanner`
 --
 
 -- --------------------------------------------------------
@@ -39,8 +39,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `balance`) VALUES
-(1, 'user', '1234', 20),
-(8, 'admin', '1234', 500);
+(1, 'admin', '1234', 0),
+(2, 'user', '1234', 200);
 
 -- --------------------------------------------------------
 
@@ -50,6 +50,10 @@ INSERT INTO `admin` (`id`, `username`, `password`, `balance`) VALUES
 
 CREATE TABLE `stations` (
   `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `lat` double NOT NULL,
+  `lon` double NOT NULL,
+  `plugs` int(11) NOT NULL,
   `port1` int(11) NOT NULL,
   `port2` int(11) NOT NULL,
   `port3` int(11) NOT NULL
@@ -59,8 +63,12 @@ CREATE TABLE `stations` (
 -- Dumping data for table `stations`
 --
 
-INSERT INTO `stations` (`id`, `port1`, `port2`, `port3`) VALUES
-(1, 10, 0, 0);
+INSERT INTO `stations` (`id`, `name`, `lat`, `lon`, `plugs`, `port1`, `port2`, `port3`) VALUES
+(1, 'miraj', 16.8222, 74.6509, 2, 20, 0, 0),
+(2, 'kupwad', 16.8752, 74.6319, 1, 0, 0, 0),
+(3, 'vijaynagar', 16.8423, 74.6181, 0, 0, 0, 0),
+(4, 'madhavnagar', 16.8922, 74.5881, 0, 0, 0, 0),
+(5, 'kolhapur', 16.705, 74.2433, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -86,13 +94,13 @@ ALTER TABLE `stations`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stations`
 --
 ALTER TABLE `stations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
